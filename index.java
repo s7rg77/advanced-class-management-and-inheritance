@@ -159,7 +159,7 @@ public class CuentaCorriente extends Cuenta {
 
     @Override
     public void retirar(double cantidad) {
-        if (saldo &gt;= cantidad) {
+        if (saldo >= cantidad) {
             saldo -= cantidad;
         }
     }
@@ -241,7 +241,7 @@ public class CuentaAhorro extends Cuenta {
 
     @Override
     public void retirar(double cantidad) {
-        if (saldo - cantidad &gt;= saldoMinimo) {
+        if (saldo - cantidad >= saldoMinimo) {
             saldo -= cantidad;
         } else {
             System.out.println("Saldo insuficiente.");
@@ -271,20 +271,20 @@ import javax.swing.JOptionPane;
 public class Metodos {
 
     final private String dat = "clientes.dat";
-    private ArrayList&lt;Cliente&gt; 
-            arraylist = new ArrayList&lt;Cliente&gt;();
-    private ArrayList&lt;CuentaCorriente&gt; 
-            arraylistcc = new ArrayList&lt;CuentaCorriente&gt;();
-    private ArrayList&lt;CuentaAhorro&gt; 
-            arraylistca = new ArrayList&lt;CuentaAhorro&gt;();
+    private ArrayList<Cliente> 
+            arraylist = new ArrayList<Cliente>();
+    private ArrayList<CuentaCorriente> 
+            arraylistcc = new ArrayList<CuentaCorriente>();
+    private ArrayList<CuentaAhorro> 
+            arraylistca = new ArrayList<CuentaAhorro>();
 
-    public ArrayList&lt;Cliente&gt; returncliente() {
+    public ArrayList<Cliente> returncliente() {
         return arraylist;
     }
-    public ArrayList&lt;CuentaCorriente&gt; returncuentacorriente() {
+    public ArrayList<CuentaCorriente> returncuentacorriente() {
         return arraylistcc;
     }
-    public ArrayList&lt;CuentaAhorro&gt; returncuentaahorro() {
+    public ArrayList<CuentaAhorro> returncuentaahorro() {
         return arraylistca;
     }
 
@@ -329,7 +329,7 @@ public class Metodos {
         try {
             DataOutputStream dos = new DataOutputStream(new FileOutputStream(
                     dat));
-            for (int i = 0; i &lt; arraylist.size(); i++) {
+            for (int i = 0; i < arraylist.size(); i++) {
                 dos.writeUTF(Integer.toString(arraylist.get(
                         i).getIdCliente()));
                 dos.writeUTF(arraylist.get(i).getNombre());
@@ -430,7 +430,7 @@ public class Metodos {
             File file = new File("clientes.dat");
             FileInputStream fis = new FileInputStream(file);
             DataInputStream dis = new DataInputStream(fis);
-            while (dis.available() &gt; 0) {
+            while (dis.available() > 0) {
                 String idCliente = dis.readUTF();
                 String nombre = dis.readUTF();
                 String direccion = dis.readUTF();
@@ -517,7 +517,7 @@ public class Metodos {
     public String list() {
         String text = "";
         text = text + "lista de clientes:" + "\n" + "\n";
-        for (int i = 0; i &lt; arraylist.size(); i++) {
+        for (int i = 0; i < arraylist.size(); i++) {
             text = text + "idCliente: "
                     + arraylist.get(i).getIdCliente() + "\n";
             text = text + "nombre: "
@@ -559,13 +559,13 @@ public class Metodos {
             int interesV = Integer.parseInt(interesVString);
             int saldoM = Integer.parseInt(saldoMString);
             int mod = -1;
-            for (int i = 0; i &lt; arraylist.size(); i++) {
+            for (int i = 0; i < arraylist.size(); i++) {
                 if (arraylist.get(i).getIdCliente() == idCliente) {
                     mod = i;
                     break;
                 }
             }
-            if (mod &gt;= 0) {
+            if (mod >= 0) {
                 arraylist.get(mod).setNombre(nombre);
                 arraylist.get(mod).setDireccion(direccion);
                 arraylist.get(mod).setTelefono(telefono);
@@ -621,13 +621,13 @@ public class Metodos {
                 return "";
             }
             int del = -1;
-            for (int i = 0; i &lt; arraylist.size(); i++) {
+            for (int i = 0; i < arraylist.size(); i++) {
                 if (arraylist.get(i).getIdCliente() == idCliente) {
                     del = i;
                     break;
                 }
             }
-            if (del &gt;= 0) {
+            if (del >= 0) {
                 arraylist.remove(del);
                 arraylistcc.remove(del);
                 arraylistca.remove(del);
@@ -688,7 +688,7 @@ public class Entorno extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // &lt;editor-fold defaultstate="collapsed" desc="Generated Code"&gt;//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 
     private void initComponents() {
 
@@ -1024,7 +1024,7 @@ public class Entorno extends javax.swing.JFrame {
         );
 
         pack();
-    }// &lt;/editor-fold&gt;//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void txtidClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidClienteActionPerformed
 
@@ -1171,7 +1171,7 @@ public class Entorno extends javax.swing.JFrame {
                     "debe introducir una cantidad válida");
             return;
         }
-        for (int i = 0; i &lt; me.returncuentacorriente().size(); i++) {
+        for (int i = 0; i < me.returncuentacorriente().size(); i++) {
             CuentaCorriente cuenta = me.returncuentacorriente().get(i);
             if (cuenta.getNumeroDeCuenta() == numCC) {
                 cuenta.ingresar(cantidad);
@@ -1227,7 +1227,7 @@ public class Entorno extends javax.swing.JFrame {
                     "debe introducir una cantidad válida");
             return;
         }
-        for (int i = 0; i &lt; me.returncuentaahorro().size(); i++) {
+        for (int i = 0; i < me.returncuentaahorro().size(); i++) {
             CuentaAhorro cuenta = me.returncuentaahorro().get(i);
             if (cuenta.getNumeroDeCuenta() == numCA) {
                 cuenta.ingresar(cantidad);
@@ -1283,10 +1283,10 @@ public class Entorno extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        for (int i = 0; i &lt; me.returncuentacorriente().size(); i++) {
+        for (int i = 0; i < me.returncuentacorriente().size(); i++) {
             CuentaCorriente cuenta = me.returncuentacorriente().get(i);
             if (cuenta.getNumeroDeCuenta() == numCC) {
-                if (cuenta.getSaldo() &gt;= cantidad) {
+                if (cuenta.getSaldo() >= cantidad) {
                     cuenta.retirar(cantidad);
                     me.returncuentacorriente().set(i, cuenta);
                     me.save();
@@ -1345,10 +1345,10 @@ public class Entorno extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-        for (int i = 0; i &lt; me.returncuentaahorro().size(); i++) {
+        for (int i = 0; i < me.returncuentaahorro().size(); i++) {
             CuentaAhorro cuenta = me.returncuentaahorro().get(i);
             if (cuenta.getNumeroDeCuenta() == numCA) {
-                if (cuenta.getSaldo() - cantidad &gt;= cuenta.getSaldoMinimo()) {
+                if (cuenta.getSaldo() - cantidad >= cuenta.getSaldoMinimo()) {
                     cuenta.retirar(cantidad);
                     me.returncuentaahorro().set(i, cuenta);
                     me.save();
@@ -1397,7 +1397,7 @@ public class Entorno extends javax.swing.JFrame {
                     "el número de cuenta corriente introducido no existe");
             return;
         }
-        for (int i = 0; i &lt; me.returncuentacorriente().size(); i++) {
+        for (int i = 0; i < me.returncuentacorriente().size(); i++) {
             CuentaCorriente cuenta = me.returncuentacorriente().get(i);
             if (cuenta.getNumeroDeCuenta() == numCC) {
                 cuenta.actualizarSaldo();
@@ -1454,7 +1454,7 @@ public class Entorno extends javax.swing.JFrame {
                     "error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        for (int i = 0; i &lt; me.returncuentaahorro().size(); i++) {
+        for (int i = 0; i < me.returncuentaahorro().size(); i++) {
             CuentaAhorro cuenta = me.returncuentaahorro().get(i);
             if (cuenta.getNumeroDeCuenta() == numCA) {
                 cuenta.setInteresVariable(iv);
@@ -1512,7 +1512,7 @@ public class Entorno extends javax.swing.JFrame {
                     "error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        for (int i = 0; i &lt; me.returncuentaahorro().size(); i++) {
+        for (int i = 0; i < me.returncuentaahorro().size(); i++) {
             CuentaAhorro cuenta = me.returncuentaahorro().get(i);
             if (cuenta.getNumeroDeCuenta() == numCA) {
                 cuenta.setSaldoMinimo(sm);
